@@ -3,13 +3,13 @@
 public class R08_VNA02_j {
     public static void main(String[] args) {
         final class Flag {
-            private volatile boolean flag = true;
+            private boolean flag = true;
 
-            public void toggle() {  // Unsafe
-                flag ^= true;
+            public synchronized void toggle() {
+                flag ^= true; // Same as flag = !flag;
             }
 
-            public boolean getFlag() { // Safe
+            public synchronized boolean getFlag() {
                 return flag;
             }
         }
