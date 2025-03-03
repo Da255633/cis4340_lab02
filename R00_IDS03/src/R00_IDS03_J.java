@@ -6,10 +6,14 @@ public class ROO_IDS03_J {
         //IDS03-J Do not log unsanitized user input Given the non-compliant code below
 
         if(loginSuccessful){
-            logger.severe("user login succeeded for: " + username);
+            logger.severe("user login succeeded for: " + sanitizeUser(username));
         }
         else{
-            logger.severe("user login failed for :" + username);
+            logger.severe("user login failed for :" + sanitizeUser(username));
+        }
+        public String santizieUser(String username){
+            return Pattern.matches("[A-Za-z0-9_]+", username))
+            ? username : "unauthorized user";
         }
 
     }
